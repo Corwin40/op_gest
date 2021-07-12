@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formposte index{% endblock %}
+
+{% block body %}
+    <h1>Formposte index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Questions</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>LastName</th>
+                <th>Rgpd</th>
+                <th>IsRgpd</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formposte in formpostes %}
+            <tr>
+                <td>{{ formposte.id }}</td>
+                <td>{{ formposte.firstName }}</td>
+                <td>{{ formposte.email }}</td>
+                <td>{{ formposte.phone }}</td>
+                <td>{{ formposte.questions ? formposte.questions|join(', ') : '' }}</td>
+                <td>{{ formposte.createdAt ? formposte.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ formposte.updatedAt ? formposte.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ formposte.lastName }}</td>
+                <td>{{ formposte.rgpd }}</td>
+                <td>{{ formposte.isRgpd ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('admin_formposte_show', {'id': formposte.id}) }}">show</a>
+                    <a href="{{ path('admin_formposte_edit', {'id': formposte.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_formposte_new') }}">Create new</a>
+{% endblock %}

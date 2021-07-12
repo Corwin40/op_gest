@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Formposte
+{% endblock %}
+
+{% block content %}
+	<section class="container">
+		<div class="row">
+			<div class="col-12">
+				<h1>Nouvelle enquête</h1>
+
+				{{ include('admin/formposte/_form.html.twig') }}
+
+				<a href="{{ path('admin_formposte_index') }}">back to list</a>
+			</div>
+		</div>
+	</section>
+{% endblock %}

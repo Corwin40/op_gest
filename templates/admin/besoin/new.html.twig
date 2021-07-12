@@ -1,0 +1,11 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}New Besoin{% endblock %}
+
+{% block content %}
+    <h1>Create new Besoin</h1>
+
+    {{ include('admin/besoin/_form.html.twig') }}
+
+    <a href="{{ path('admin_besoin_index') }}">back to list</a>
+{% endblock %}

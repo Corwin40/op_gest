@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formposte{% endblock %}
+
+{% block body %}
+    <h1>Formposte</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formposte.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ formposte.firstName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ formposte.email }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ formposte.phone }}</td>
+            </tr>
+            <tr>
+                <th>Questions</th>
+                <td>{{ formposte.questions ? formposte.questions|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ formposte.createdAt ? formposte.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ formposte.updatedAt ? formposte.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ formposte.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Rgpd</th>
+                <td>{{ formposte.rgpd }}</td>
+            </tr>
+            <tr>
+                <th>IsRgpd</th>
+                <td>{{ formposte.isRgpd ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_formposte_index') }}">back to list</a>
+
+    <a href="{{ path('admin_formposte_edit', {'id': formposte.id}) }}">edit</a>
+
+    {{ include('admin_formposte/_delete_form.html.twig') }}
+{% endblock %}
