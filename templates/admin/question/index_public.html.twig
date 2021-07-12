@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}question index{% endblock %}
+
+{% block content %}
+    <section class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Liste des questions</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>questions</th>
+                        <th>Level</th>
+                        <th>actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for question in questions %}
+                        <tr>
+                            <td><input type="checkbox" value="{{ question.id }}"></td>
+                            <td>{{ question.id }}</td>
+                            <td>{{ question.name }}</td>
+                            <td>{{ question.level }}</td>
+                            <td>
+                                <a href="{{ path('admin_question_show', {'id': question.id}) }}">show</a>
+                                <a href="{{ path('admin_question_edit', {'id': question.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
