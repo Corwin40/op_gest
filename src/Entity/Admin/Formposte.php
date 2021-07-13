@@ -55,14 +55,9 @@ class Formposte
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $rgpd = false;
-
-    /**
      * @ORM\Column(type="boolean")
      */
-    private $isRgpd;
+    private $isRgpd = false;
 
     public function getId(): ?int
     {
@@ -154,18 +149,6 @@ class Formposte
     public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getRgpd(): ?string
-    {
-        return $this->rgpd;
-    }
-
-    public function setRgpd(string $rgpd): self
-    {
-        $this->rgpd = $rgpd;
 
         return $this;
     }

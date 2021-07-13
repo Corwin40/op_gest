@@ -15,10 +15,8 @@ class FormposteType extends AbstractType
             ->add('firstName')
             ->add('email')
             ->add('phone')
-            ->add('questions')
             ->add('lastName')
-            ->add('rgpd')
-            ->add('isRgpd');
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
