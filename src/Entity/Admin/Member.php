@@ -4,11 +4,14 @@ namespace App\Entity\Admin;
 
 use App\Repository\Admin\MemberRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=MemberRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Member implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -54,6 +57,23 @@ class Member implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="datetime_immutable")
      */
     private $updatedAt;
+
+    /**
+     * Permet de mettre en place la date de création et de modification
+     * 
+     * @ORM\PrePersist
+     *
+     * @return void
+     */
+    public function prePersist()
+    {
+        if (empty($this->createdAt)) {
+            $this->createdAt = new \DateTimeImmutable();
+        }
+        if (empty($this->updatedAt)) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
 
     public function getId(): ?int
     {
