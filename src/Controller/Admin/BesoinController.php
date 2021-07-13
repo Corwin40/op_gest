@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/besoin")
+ * @Route("")
  */
 class BesoinController extends AbstractController
 {
     /**
-     * @Route("/", name="admin_besoin_index", methods={"GET"})
+     * @Route("/admin/besoin/", name="admin_besoin_index", methods={"GET"})
      */
     public function index(BesoinRepository $besoinRepository): Response
     {
@@ -26,7 +26,17 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="admin_besoin_new", methods={"GET","POST"})
+     * @Route("/webapp/besoins/", name="admin_besoin_index_public", methods={"GET"})
+     */
+    public function index_public(BesoinRepository $besoinRepository): Response
+    {
+        return $this->render('admin/besoin/index_public.html.twig', [
+            'besoins' => $besoinRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/besoin/new", name="admin_besoin_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +59,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_besoin_show", methods={"GET"})
+     * @Route("/admin/besoin/{id}", name="admin_besoin_show", methods={"GET"})
      */
     public function show(Besoin $besoin): Response
     {
@@ -59,7 +69,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="admin_besoin_edit", methods={"GET","POST"})
+     * @Route("/admin/besoin/{id}/edit", name="admin_besoin_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Besoin $besoin): Response
     {
@@ -79,7 +89,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_besoin_delete", methods={"POST"})
+     * @Route("/admin/besoin/{id}", name="admin_besoin_delete", methods={"POST"})
      */
     public function delete(Request $request, Besoin $besoin): Response
     {
