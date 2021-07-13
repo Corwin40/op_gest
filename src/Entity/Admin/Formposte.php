@@ -40,6 +40,11 @@ class Formposte
     private $questions = [];
 
     /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $besoins = [];
+
+    /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
@@ -53,11 +58,6 @@ class Formposte
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastName;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $rgpd = false;
 
     /**
      * @ORM\Column(type="boolean")
@@ -117,6 +117,18 @@ class Formposte
         return $this;
     }
 
+    public function getBesoins(): ?array
+    {
+        return $this->questions;
+    }
+
+    public function setBesoins(array $questions): self
+    {
+        $this->questions = $questions;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -154,18 +166,6 @@ class Formposte
     public function setLastName(?string $lastName): self
     {
         $this->lastName = $lastName;
-
-        return $this;
-    }
-
-    public function getRgpd(): ?string
-    {
-        return $this->rgpd;
-    }
-
-    public function setRgpd(string $rgpd): self
-    {
-        $this->rgpd = $rgpd;
 
         return $this;
     }
