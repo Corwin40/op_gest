@@ -15,7 +15,7 @@
     <body>
     <header>
         {% block header %}
-            <section>
+            <section class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <p class="text-center">
@@ -27,11 +27,26 @@
         {% endblock %}
     </header>
     <main>
-        {% block aside %}{% endblock %}
         {% block content %}{% endblock %}
     </main>
-    <footer>
-        {% block footer %}{% endblock %}
+    <footer class="fixed-bottom">
+        {% block footer %}
+            <section class="container-fluid">
+            </section>
+            <section class="container-fluid">
+                <div class="row">
+                    <div class="col-5">
+                        <p class="text-start">Site réalisé sous Symfony5 - OpenPixl</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="text-center"><a href="#" style="color: #AAAAAA"><i class="fas fa-lock"></i></a></p>
+                    </div>
+                    <div class="col-5">
+                        <p class="text-end"><a href="http://www.clubmicrosaintpierre.fr">Club Micro Saint Pierre</a></p>
+                    </div>
+                </div>
+            </section>
+        {% endblock %}
     </footer>
 
     </body>
