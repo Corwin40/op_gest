@@ -1,8 +1,54 @@
 {{ form_start(form) }}
 <div class="accordion-body">
-<div>
-test    
-</div>
+    <div class="row">
+        <div class="col-12">
+            <p class="text-center">Pour que nous puissions vous accompagner dans vos demandes où vos besoins, veuillez inscrire votre prénom, votre nom ainsi qu'un élement de contact
+                <br>Les champs en gras sont obligatoires.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <h5>Indiquez votre Prénom & Nom de famille :</h5>
+            <div class="row mb-1 mt-1 g-1">
+                <div class="col-6">
+                    {{ form_widget(form.firstName, {'attr': {'class': 'form-control form-control-sm', 'placeholder':'Votre prénom'}}) }}
+                </div>
+                <div class="col-6">
+                    {{ form_widget(form.lastName, {'attr': {'class': 'form-control form-control-sm', 'placeholder':'Votre nom'}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h5>Indiquez votre numéro de téléphone* et un mail :</h5>
+            <div class="row mb-1 mt-1 g-1">
+                <div class="col-4">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone"></i></span>
+                        {{ form_widget(form.phone, {'attr': {'class': 'form-control form-control-sm', 'placeholder':'05.58.58.58.58'}}) }}
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope"></i></span>
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control form-control-sm', 'placeholder':'05.58.58.58.58'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <h5 class="mt-3">Autorisation</h5>
+            <fieldset>
+                <div class="form-check form-switch">
+                    {{ form_widget(form.isRgpd, {'attr': {'class': 'form-check-input'}}) }}
+                    {{ form_label(form.isRgpd, "En cochant ce formulaire, j'autorise le Club Micro Saint pierre a utiliser mes données personnelles à la seule fin d'un accompagnement à l'usage du numérique ou de statistique sur l'évolution des connaissances des usagers.", {'label_attr': {'class':'form-check-label'}}) }}
+                </div>
+            </fieldset>
+        </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 {{ form_rest(form) }}
 {{ form_end(form) }}

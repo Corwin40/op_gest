@@ -64,6 +64,26 @@ class Formposte
      */
     private $isRgpd = false;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $genre;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $age;
+
+    /**
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    private $equipement;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isInternet = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -178,6 +198,54 @@ class Formposte
     public function setIsRgpd(bool $isRgpd): self
     {
         $this->isRgpd = $isRgpd;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(?string $genre): self
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(?int $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getEquipement(): ?string
+    {
+        return $this->equipement;
+    }
+
+    public function setEquipement(?string $equipement): self
+    {
+        $this->equipement = $equipement;
+
+        return $this;
+    }
+
+    public function getIsInternet(): ?bool
+    {
+        return $this->isInternet;
+    }
+
+    public function setIsInternet(bool $isInternet): self
+    {
+        $this->isInternet = $isInternet;
 
         return $this;
     }

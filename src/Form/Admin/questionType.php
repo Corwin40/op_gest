@@ -13,7 +13,6 @@ class questionType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug')
         ;
     }
 

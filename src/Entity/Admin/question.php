@@ -3,6 +3,7 @@
 namespace App\Entity\Admin;
 
 use App\Repository\Admin\questionRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
