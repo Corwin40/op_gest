@@ -19,8 +19,8 @@
                 <td>{{ besoin.id }}</td>
                 <td>{{ besoin.name }}</td>
                 <td>
-                    <a href="{{ path('admin_besoin_show', {'id': besoin.id}) }}">show</a>
-                    <a href="{{ path('admin_besoin_edit', {'id': besoin.id}) }}">edit</a>
+                    <a href="{{ path('op_admin_besoin_show', {'id': besoin.id}) }}">show</a>
+                    <a href="{{ path('op_admin_besoin_edit', {'id': besoin.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_besoin_new') }}">Create new</a>
+    <a href="{{ path('op_admin_besoin_new') }}">Create new</a>
 {% endblock %}

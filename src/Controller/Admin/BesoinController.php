@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BesoinController extends AbstractController
 {
     /**
-     * @Route("/admin/besoin/", name="admin_besoin_index", methods={"GET"})
+     * @Route("/opadmin/besoin/", name="op_admin_besoin_index", methods={"GET"})
      */
     public function index(BesoinRepository $besoinRepository): Response
     {
@@ -26,7 +26,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/webapp/besoins/", name="admin_besoin_index_public", methods={"GET"})
+     * @Route("/webapp/besoins/", name="op_webapp_besoin_index_public", methods={"GET"})
      */
     public function index_public(BesoinRepository $besoinRepository): Response
     {
@@ -36,7 +36,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/admin/besoin/new", name="admin_besoin_new", methods={"GET","POST"})
+     * @Route("/opadmin/besoin/new", name="op_admin_besoin_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class BesoinController extends AbstractController
             $entityManager->persist($besoin);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_besoin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('op_admin_besoin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/besoin/new.html.twig', [
@@ -59,7 +59,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/admin/besoin/{id}", name="admin_besoin_show", methods={"GET"})
+     * @Route("op/admin/besoin/{id}", name="op_admin_besoin_show", methods={"GET"})
      */
     public function show(Besoin $besoin): Response
     {
@@ -79,7 +79,7 @@ class BesoinController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_besoin_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('op_admin_besoin_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/besoin/edit.html.twig', [
