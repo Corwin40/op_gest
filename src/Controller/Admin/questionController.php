@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class questionController extends AbstractController
+class QuestionController extends AbstractController
 {
     /**
      * Controller Admin
@@ -25,7 +25,7 @@ class questionController extends AbstractController
 
     /**
      * Controller Public
-     * @Route("/webapp/question", name="op_webapp_question_index", methods={"GET"})
+     * @Route("/webapp/questions", name="op_webapp_question_index", methods={"GET"})
      */
     public function index_public(questionRepository $questionRepository): Response
     {

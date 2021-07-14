@@ -7,13 +7,58 @@
 	<section class="container">
 		<div class="row">
 			<div class="col-12">
-				<div class="card">
-					<div class="card-header">
-						<h3>Enquête 1/3 | Information sur l'usager</h3>
+				<div class="accordion accordion-flush" id="accordionFlushExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+								Renseignements sur l'usager du Groupe&nbsp;<b>La Poste</b>
+							</button>
+						</h2>
+						<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+							{{ include('admin/formposte/_form.html.twig') }}
+						</div>
 					</div>
-					{{ include('admin/formposte/_form.html.twig') }}
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingTwo">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+								Accordion Item #2
+							</button>
+						</h2>
+						<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="flush-headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+								Accordion Item #3
+							</button>
+						</h2>
+						<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+							<div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+		{{render(controller('App\\Controller\\Admin\\QuestionController::index_public'))}}
+    	{{render(controller('App\\Controller\\Admin\\BesoinController::index_public'))}}
+
+	<div class="row">
+        <div class="col-12">
+            
+            <p>Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par Le <b>Club Micro Saiont pierre</b> pour: 
+            - contacter les usagers souhaitant bénéficier d'un accompagnement sur le numérique (aide à la constitution de dossier dématérialiser, micro-formation sur l'usage de l'ordinateur et d'internet, ...). 
+            <br>Les données collectées seront communiquées aux seuls destinataires suivants : <b>le groupe La Poste</b>. elles seront conservées pendant 6 mois, 
+            vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données :
+            - Vous pouvez retirer à tout moment votre consentement au traitement de vos données ;
+            - Vous pouvez également vous opposer au traitement de vos données ;
+            - Vous pouvez également exercer votre droit à la portabilité de vos données.
+            <br>Consultez le site <a href="https://www.cnil.fr"> cnil.fr</a> pour plus d’informations sur vos droits. 
+            Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez contacter le Club Micor Saint Pierre suer le mail suivant : contact@openpixl.fr.
+            Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
+            </p>
+        </div>
+    </div>
 	</section>
 {% endblock %}
