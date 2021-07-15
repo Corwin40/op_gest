@@ -69,7 +69,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/admin/besoin/{id}/edit", name="admin_besoin_edit", methods={"GET","POST"})
+     * @Route("/admin/besoin/{id}/edit", name="op_admin_besoin_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Besoin $besoin): Response
     {

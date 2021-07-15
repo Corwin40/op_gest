@@ -32,8 +32,8 @@ class FormposteType extends AbstractType
             ])
             ->add('genre',ChoiceType::class, [
                 'choices'  => [
-                    'Femme' => 'women',
-                    'Homme' => 'men'
+                    'Une femme' => 'women',
+                    'Une homme' => 'men'
                 ],
             ])
             ->add('isInternet')

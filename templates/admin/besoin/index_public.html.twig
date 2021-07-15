@@ -8,7 +8,7 @@
         <tbody>
         {% for besoin in besoins %}
             <tr>
-                <td><input type="checkbox" value="{{ besoin.id }}"></td>
+                <td><input type="checkbox" value="{{ besoin.id }}" name="checkedbesoin" onchange="toggleCheckbox(this)"></td>
                 <td>{{ besoin.name }}</td>
 
             </tr>
@@ -19,3 +19,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <script>
+        function toggleCheckbox(element)
+        {
+
+        }
+    </script>

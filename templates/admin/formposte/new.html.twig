@@ -6,6 +6,18 @@
 	{{ parent() }}
 	<script>
 		window.onload = function(){
+
+			// séélectin des besoins
+			function checkBesoins(){
+				const valuesCheck = [];
+				const checkedBesoin = document.getElementsByName('checkedbesoin');
+				for (i=0; checkBesoins.length; i++) {
+					if(checkedBesoin.checked){
+						valuesCheck.push(checkedBesoin[i].value)
+					}
+				}
+			}
+
 			// function d'envoie des données
 			function onClickSubmit(event){
 				event.preventDefault();
@@ -13,7 +25,14 @@
 				const lastName = document.getElementById('formposte_lastName').value;
 				const phone = document.getElementById('formposte_phone').value;
 				const email = document.getElementById('formposte_email').value;
-				console.log(firstName, lastName, phone, email);
+				const besoins = [];
+				const checkedBesoin = document.getElementsByName('checkedbesoin');
+				for (i=0; checkBesoins.length; i++) {
+					if(checkedBesoin.checked){
+						besoins.push(checkedBesoin[i].value)
+					}
+				}
+				console.log(firstName, lastName, phone, email, besoins);
 			}
 
 			// évènement sur le clic d'nevoie formulaire
@@ -33,13 +52,18 @@
 					<div class="accordion-item active">
 						<h2 class="accordion-header" id="flush-headingOne">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+								{% if app.request.get('_route') == 'op_webapp_formposte_newbesoin'%}
+								<b>ENQUETE 1/2 : </b>&nbsp;Qui êtes-vous ?
+								{% else %}
 								<b>ENQUETE 1/3 : </b>&nbsp;Qui êtes-vous ?
+								{% endif %}
 							</button>
 						</h2>
 						<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
 							{{ include('admin/formposte/_form.html.twig') }}
 						</div>
 					</div>
+					{% if app.request.get('_route') != 'op_webapp_formposte_newbesoin'%}
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="flush-headingTwo">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -52,10 +76,15 @@
 							</div>
 						</div>
 					</div>
+					{% endif %}
 					<div class="accordion-item">
 						<h2 class="accordion-header" id="flush-headingThree">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+								{% if app.request.get('_route') == 'op_webapp_formposte_newbesoin'%}
+								<b>ENQUETE 2/2 : </b>&nbsp;Souhaitez-vous bénéficier d'un accompagnement ?
+								{% else %}
 								<b>ENQUETE 3/3 : </b>&nbsp;Souhaitez-vous bénéficier d'un accompagnement ?
+								{% endif %}
 							</button>
 						</h2>
 						<div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">

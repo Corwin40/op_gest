@@ -24,6 +24,28 @@ class FormposteController extends AbstractController
     }
 
     /**
+     * @Route("/formposte/newbesoin", name="op_webapp_formposte_newbesoin", methods={"GET","POST"})
+     */
+    public function newbesoin(Request $request): Response
+    {
+        $formpostebesoin = new Formposte();
+        $form = $this->createForm(FormposteType::class, $formpostebesoin);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($formpostebesoin);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_formposte_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('admin/formposte/new.html.twig', [
+            'formposte' => $formpostebesoin,
+            'form' => $form,
+        ]);
+    }
+    /**
      * @Route("/formposte/new", name="op_webapp_formposte_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
