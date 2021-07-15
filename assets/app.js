@@ -7,6 +7,7 @@
 
 // any CSS you import will output into a single css file (admin.scss in this case)
 import './styles/app.scss';
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 require('bootstrap');
 
 // start the Stimulus application
