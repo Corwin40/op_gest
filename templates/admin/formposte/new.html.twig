@@ -7,17 +7,6 @@
 	<script>
 		window.onload = function(){
 
-			// séélectin des besoins
-			function checkBesoins(){
-				const valuesCheck = [];
-				const checkedBesoin = document.getElementsByName('checkedbesoin');
-				for (i=0; checkBesoins.length; i++) {
-					if(checkedBesoin.checked){
-						valuesCheck.push(checkedBesoin[i].value)
-					}
-				}
-			}
-
 			// function d'envoie des données
 			function onClickSubmit(event){
 				event.preventDefault();
