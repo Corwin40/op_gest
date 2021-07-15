@@ -36,6 +36,17 @@
                 </div>
             </div>
         </div>
+        <div class="col-6">
+            <div class="row mb-1 mt-1 g-1">
+
+                <div class="col-4">
+                    {{ form_widget(form.genre, {'attr': {'class': 'form-select form-select-sm'}}) }}
+                </div>
+                <div class="col-4">
+                    {{ form_widget(form.age, {'attr': {'class': 'form-select form-select-sm'}}) }}
+                </div>
+            </div>
+        </div>
         <div class="col-12">
             <h5 class="mt-3">Autorisation</h5>
             <fieldset>
@@ -44,9 +55,6 @@
                     {{ form_label(form.isRgpd, "En cochant ce formulaire, j'autorise le Club Micro Saint pierre a utiliser mes données personnelles à la seule fin d'un accompagnement à l'usage du numérique ou de statistique sur l'évolution des connaissances des usagers.", {'label_attr': {'class':'form-check-label'}}) }}
                 </div>
             </fieldset>
-        </div>
-
-            </div>
         </div>
     </div>
 </div>

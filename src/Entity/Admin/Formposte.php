@@ -65,16 +65,6 @@ class Formposte
     private $isRgpd = false;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $genre;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $age;
-
-    /**
      * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $equipement;
@@ -83,6 +73,16 @@ class Formposte
      * @ORM\Column(type="boolean")
      */
     private $isInternet = false;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $age;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $genre;
 
     public function getId(): ?int
     {
@@ -202,30 +202,6 @@ class Formposte
         return $this;
     }
 
-    public function getGenre(): ?string
-    {
-        return $this->genre;
-    }
-
-    public function setGenre(?string $genre): self
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
-
-    public function getAge(): ?int
-    {
-        return $this->age;
-    }
-
-    public function setAge(?int $age): self
-    {
-        $this->age = $age;
-
-        return $this;
-    }
-
     public function getEquipement(): ?string
     {
         return $this->equipement;
@@ -246,6 +222,30 @@ class Formposte
     public function setIsInternet(bool $isInternet): self
     {
         $this->isInternet = $isInternet;
+
+        return $this;
+    }
+
+    public function getAge(): ?string
+    {
+        return $this->age;
+    }
+
+    public function setAge(string $age): self
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getGenre(): ?string
+    {
+        return $this->genre;
+    }
+
+    public function setGenre(string $genre): self
+    {
+        $this->genre = $genre;
 
         return $this;
     }
