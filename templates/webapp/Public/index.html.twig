@@ -2,6 +2,72 @@
 
 {% block title %}Enquête fracture numérique | Club Micro Saint Pierre{% endblock %}
 
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script>
+		window.onload = function(event){
+
+			// function Ajout
+			function onClickAddUsager(event){
+				event.preventDefault();
+				const url = this.href;
+				axios
+						.post(url)
+						.then(function(response)
+						{
+							var option = {
+								animation : true,
+								autohide: true,
+								delay : 4000,
+							};
+							var toastHTMLElement = document.getElementById("toaster");
+							var message = response.data.message;
+							var toastBody = toastHTMLElement.querySelector('.toast-body') // selection de l'élément possédant le message
+							toastBody.textContent = message;
+							var toastElement = new bootstrap.Toast(toastHTMLElement, option);
+							toastElement.show();
+						})
+						.catch()
+			}
+
+			// function Ajout
+			function onClickRemUsager(event){
+				event.preventDefault();
+				const url = this.href;
+				axios
+						.post(url)
+						.then(function(response)
+						{
+							var option = {
+								animation : true,
+								autohide: true,
+								delay : 3000,
+							};
+							var toastHTMLElement = document.getElementById("toaster");
+							var message = response.data.message;
+							var toastBody = toastHTMLElement.querySelector('.toast-body') // selection de l'élément possédant le message
+							toastBody.textContent = message;
+							var toastElement = new bootstrap.Toast(toastHTMLElement, option);
+							toastElement.show();
+						})
+						.catch()
+			}
+
+			// ajout d'un usager
+			document.querySelectorAll('a.js-addusager').forEach(function(link){
+				link.addEventListener('click', onClickAddUsager)
+			})
+
+
+			// suppression d'un usager
+			document.querySelectorAll('a.js-remusager').forEach(function(link){
+				link.addEventListener('click', onClickRemUsager)
+			})
+		}
+	</script>
+{% endblock %}
+
 {% block content %}
 	<section class="container">
 		<div class="row justify-content-center mt-3">
@@ -11,6 +77,69 @@
 					<a class="btn btn-outline-primary" href="{{path('op_webapp_formposte_new')}}">Participer à l'évaluation de vos connaissances ?</a>&nbsp;&nbsp;
 					<a class="btn btn-outline-primary" href="{{path('op_webapp_formposte_newbesoin')}}">Quels seraient vos besoins ?</a>
 				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block footer %}
+	<section class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-6">
+				<p class="text-center">
+					<a href="{{ path('op_admin_dashboard_addusager') }}" class="js-addusager"><i class="bi bi-person-check" style="font-size: 2rem; color: cornflowerblue;"></i></a> |
+					<a href="{{ path('op_admin_dashboard_remusager') }}" class="js-remusager"><i class="bi bi-person-dash" style="font-size: 2rem; color: cornflowerblue;"></i></a></p>
+			</div>
+		</div>
+	</section>
+	<section class="container-fluid">
+		<div class="row">
+			<div class="col-5">
+				<p class="text-start">Site réalisé sous Symfony5 - OpenPixl</p>
+			</div>
+			<div class="col-2">
+				<p class="text-center"><a href="{{ path('op_admin_dashboard_index' )}}" style="color: #AAAAAA"><i class="fas fa-lock"></i></a></p>
+			</div>
+			<div class="col-5">
+				<p class="text-end">
+					<a href="http://www.clubmicrosaintpierre.fr">Club Micro Saint Pierre</a> |
+					<a data-bs-toggle="modal" data-bs-target="#donnees">politique de conservation des données</a>
+				</p>
+
+				<!-- Modal -->
+				<div class="modal fade" id="donnees" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-xl modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Note d'informations</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+								<p>Dans le cadre de son partenariat avec le Groupe "La Poste", Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par Le <b>Club Micro Saint pierre</b> avec pour objectif :
+									<br>- d'identifier les usagers ayant des difficulter avec les outils numériques,
+									<br>- de contacter ces derniers souhaitant bénéficier d'un accompagnement (aide à la constitution de dossier dématérialisés, micro-formation sur l'usage de l'ordinateur et d'internet, ...).
+									<br>- construire des statistiques territoriales concernant la situation de fracture numérique.
+								</p>
+								<p class="text-danger">Ces données ne seront utilisées que dans cet objectif et aucun autre.</p>
+								<p>Les données collectées seront communiquées aux seuls destinataires suivants : <b>le groupe La Poste</b> et seront conservées sur une durée de 6 mois.
+									<br>les usagers peuvent accéder aux données les concernant pour :
+									<br>- les rectifier,
+									<br>- demander leur effacement
+									<br>- ou d'exercer votre droit à la limitation du traitement de vos données.
+								</p>
+								<p>Consultez le site de la <a href="https://www.cnil.fr"> cnil.fr</a> pour plus d’informations sur vos droits en matière de règlementation sur les données.
+									<br>Pour exercer ces droits ou pour poser toutes questions sur le traitement de vos données dans ce dispositif, vous pouvez contacter le <b>Club Micro Saint Pierre</b> à l'adresse mail suivante : contact@openpixl.fr.
+									Si vous estimez, après nous avoir contactés, que vos droits « Informatique et Libertés » ne sont pas respectés, vous pouvez adresser une réclamation à la CNIL.
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save changes</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</section>

@@ -4,6 +4,7 @@ namespace App\Entity\Admin;
 
 use App\Repository\Admin\FormposteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FormposteRepository::class)
@@ -25,14 +26,31 @@ class Formposte
     private $firstName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Email(message="l'adresse rentrée n'est pas au bon format")
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Il nous faut au moins un numéro de téléphone")
      */
     private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $age;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $genre;
 
     /**
      * @ORM\Column(type="array", nullable=true)
@@ -45,6 +63,21 @@ class Formposte
     private $besoins = [];
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isRgpd = false;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isInternet = false;
+
+    /**
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    private $equipement;
+
+    /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
@@ -53,36 +86,6 @@ class Formposte
      * @ORM\Column(type="datetime_immutable")
      */
     private $updatedAt;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $lastName;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isRgpd = false;
-
-    /**
-     * @ORM\Column(type="string", length=25, nullable=true)
-     */
-    private $equipement;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isInternet = false;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $age;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $genre;
 
     public function getId(): ?int
     {
@@ -97,6 +100,18 @@ class Formposte
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(?string $lastName): self
+    {
+        $this->lastName = $lastName;
 
         return $this;
     }
@@ -139,53 +154,12 @@ class Formposte
 
     public function getBesoins(): ?array
     {
-        return $this->questions;
+        return $this->besoins;
     }
 
-    public function setBesoins(array $questions): self
+    public function setBesoins(array $besoins): self
     {
-        $this->questions = $questions;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @ORM\PrePersist()
-     */
-    public function setCreatedAt(): self
-    {
-        $this->createdAt = new \DateTime('now');
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     */
-    public function setUpdatedAt(): self
-    {
-        $this->updatedAt = new \DateTime('now');
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(?string $lastName): self
-    {
-        $this->lastName = $lastName;
+        $this->besoins = $besoins;
 
         return $this;
     }
@@ -247,6 +221,35 @@ class Formposte
     {
         $this->genre = $genre;
 
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function setCreatedAt(): self
+    {
+        $this->createdAt = new \DatetimeImmutable('now');
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function setUpdatedAt(): self
+    {
+        $this->updatedAt = new \DatetimeImmutable('now');
         return $this;
     }
 }

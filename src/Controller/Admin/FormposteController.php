@@ -111,4 +111,33 @@ class FormposteController extends AbstractController
 
         return $this->redirectToRoute('admin_formposte_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/webapp/formposte/addbesoin", name="op_webapp_formposte_addbesoin", methods={"GET","POST"})
+     */
+    public function addbesoin(Request $request):Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $formposte = new Formposte();
+        $formposte->setFirstName($data['firstName']);
+        $formposte->setlastName($data['lastName']);
+        $formposte->setPhone($data['phone']);
+        $formposte->setEmail($data['email']);
+        $formposte->setBesoins($data['besoins']);
+        $formposte->setAge($data['age']);
+        $formposte->setGenre($data['genre']);
+        $formposte->setIsRgpd($data['isRgpd']);
+        $formposte->setIsInternet($data['isInternet']);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($formposte);
+        $entityManager->flush();
+
+        return $this->json([
+            'code'=> 200,
+            'message' => "Ajout réalisé"
+        ], 200);
+
+    }
 }

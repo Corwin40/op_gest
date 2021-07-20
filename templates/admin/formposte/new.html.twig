@@ -4,24 +4,39 @@
 
 {% block javascripts %}
 	{{ parent() }}
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script>
 		window.onload = function(){
 
 			// function d'envoie des données
 			function onClickSubmit(event){
 				event.preventDefault();
+
+				const form = new FormData();
+				//const url = this.href;
 				const firstName = document.getElementById('formposte_firstName').value;
-				const lastName = document.getElementById('formposte_lastName').value;
-				const phone = document.getElementById('formposte_phone').value;
-				const email = document.getElementById('formposte_email').value;
-				const besoins = [];
-				const checkedBesoin = document.getElementsByName('checkedbesoin');
-				for (i=0; checkBesoins.length; i++) {
-					if(checkedBesoin.checked){
-						besoins.push(checkedBesoin[i].value)
-					}
-				}
-				console.log(firstName, lastName, phone, email, besoins);
+				//const lastName = document.getElementById('formposte_lastName').value;
+				//const phone = document.getElementById('formposte_phone').value;
+				//const email = document.getElementById('formposte_email').value;
+				//const age = document.getElementById('formposte_age').value;
+				//const genre = document.getElementById('formposte_genre').value;
+				//const isRgpd =  document.getElementById('formposte_isRgpd').value;
+				//const isInternet =  document.getElementById('formposte_isInternet').value;
+				//const values = [];
+				//const checkboxes = document.querySelectorAll(`input[name="checkedbesoin"]:checked`); // Récupére seulement les checkbox qui sont true
+				//checkboxes.forEach((checkbox) => {
+				//	values.push(checkbox.value);
+				//});
+				//const besoins = values;
+				form.append('firstName', firstName);
+				//axios
+				//	.post(url, {firstName:firstName, lastName:lastName, phone:phone, email:email, besoins:besoins, age:age, genre:genre, isRgpd:isRgpd, isInternet:isInternet})
+				//	.then(function (response){
+				//		console.log(response);
+				//	})
+				//	.catch(function(error){console.log(error)})
+
+				console.log(form);
 			}
 
 			// évènement sur le clic d'nevoie formulaire
@@ -85,7 +100,7 @@
 		</div>
 		<div class="row mt-3">
 			<div class="col-12">
-				<a class="btn btn-sm btn-outline-primary js-submit">{{ button_label|default("Valider les informations") }}</a>
+				<a href="{{ path('op_webapp_formposte_addbesoin') }}" class="btn btn-sm btn-outline-primary js-submit">{{ button_label|default("Valider les informations") }}</a>
 			</div>
 		</div>
 

@@ -25,11 +25,11 @@ class DashboardController extends AbstractController
      */
     public function addusager()
     {
-        $date = new \DateTime();
-        $date->format('Y-m-d');
-        //dd($date);
+        $date = new \DateTimeImmutable();
+        $current = $date->format('Y-m-d');
+        //dd($current);
         $lastentry = $this->getDoctrine()->getRepository(Usager::class)->findOneBy(array(),array('id'=>'DESC'));
-        //dd($lastentry);
+        //dd($lastentry->getDate(), $date);
         if (!$lastentry){
             $usager = new Usager();
             $usager->setDate($date);
@@ -39,13 +39,14 @@ class DashboardController extends AbstractController
             $entityManager->flush();
             return $this->json([
                 'code'          => 200,
-                'message'       => 'Une nouvelle date ajoutée et un usager est ajoutée'
+                'message'       => 'Création de la première date'
             ], 200);
         } else {
             $lastdate = $lastentry->getDate();
+            $lastCurrentDate = $lastdate->format('Y-m-d');
             $countUsager = $lastentry->getCountUsager();
-            //dd($countUsager);
-            if($lastdate = $date){
+            //dd($lastCurrentDate, $current);
+            if($lastCurrentDate === $current){
                 $lastentry->setCountUsager($countUsager +1);
                 $this->getDoctrine()->getManager()->flush();
                 return $this->json([

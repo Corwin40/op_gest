@@ -1,31 +1,22 @@
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for besoin in besoins %}
-            <tr>
-                <td><input type="checkbox" value="{{ besoin.id }}" name="checkedbesoin" onchange="toggleCheckbox(this)"></td>
-                <td>{{ besoin.name }}</td>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for besoin in besoins %}
+        <tr>
+            <td><input type="checkbox" value="{{ besoin.id }}" name="checkedbesoin"></td>
+            <td>{{ besoin.name }}</td>
 
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <script>
-        function toggleCheckbox(element)
-        {
-            if (element.checked == true){
-                element.checked == false
-            }else{ 
-                element.checked == true
-            }
-        }
-    </script>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="3">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

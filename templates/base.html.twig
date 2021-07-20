@@ -10,68 +10,6 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
-            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <script>
-                window.onload = function(event){
-
-                    // function Ajout
-                    function onClickAddUsager(event){
-                        event.preventDefault();
-                        const url = this.href;
-                        axios
-                            .post(url)
-                            .then(function(response)
-                            {
-                                var option = {
-                                    animation : true,
-                                    autohide: true,
-                                    delay : 4000,
-                                };
-                                var toastHTMLElement = document.getElementById("toaster");
-                                var message = response.data.message;
-                                var toastBody = toastHTMLElement.querySelector('.toast-body') // selection de l'élément possédant le message
-                                toastBody.textContent = message;
-                                var toastElement = new bootstrap.Toast(toastHTMLElement, option);
-                                toastElement.show();
-                            })
-                            .catch()
-                    }
-
-                    // function Ajout
-                    function onClickRemUsager(event){
-                        event.preventDefault();
-                        const url = this.href;
-                        axios
-                            .post(url)
-                            .then(function(response)
-                            {
-                                var option = {
-                                    animation : true,
-                                    autohide: true,
-                                    delay : 3000,
-                                };
-                                var toastHTMLElement = document.getElementById("toaster");
-                                var message = response.data.message;
-                                var toastBody = toastHTMLElement.querySelector('.toast-body') // selection de l'élément possédant le message
-                                toastBody.textContent = message;
-                                var toastElement = new bootstrap.Toast(toastHTMLElement, option);
-                                toastElement.show();
-                            })
-                            .catch()
-                    }
-
-                    // ajout d'un usager
-                    document.querySelectorAll('a.js-addusager').forEach(function(link){
-                        link.addEventListener('click', onClickAddUsager)
-                    })
-
-
-                    // suppression d'un usager
-                    document.querySelectorAll('a.js-remusager').forEach(function(link){
-                        link.addEventListener('click', onClickRemUsager)
-                    })
-                }
-            </script>
         {% endblock %}
     </head>
     <body>
@@ -94,13 +32,6 @@
     <footer>
         {% block footer %}
             <section class="container-fluid">
-                <div class="row justify-content-center">
-                    <div class="col-6">
-                        <p class="text-center">
-                            <a href="{{ path('op_admin_dashboard_addusager') }}" class="js-addusager"><i class="bi bi-person-check" style="font-size: 2rem; color: cornflowerblue;"></i></a> |
-                            <a href="{{ path('op_admin_dashboard_remusager') }}" class="js-remusager"><i class="bi bi-person-dash" style="font-size: 2rem; color: cornflowerblue;"></i></a></p>
-                    </div>
-                </div>
             </section>
             <section class="container-fluid">
                 <div class="row">
