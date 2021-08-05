@@ -35,7 +35,7 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/opadmin/question/new", name="admin_question_new", methods={"GET","POST"})
+     * @Route("/opadmin/question/new", name="op_admin_question_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +49,7 @@ class QuestionController extends AbstractController
             $entityManager->persist($question);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_question_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('op_admin_question_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/question/new.html.twig', [
@@ -59,7 +59,7 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/opadmin/question/{id}", name="admin_question_show", methods={"GET"})
+     * @Route("/opadmin/question/{id}", name="op_admin_question_show", methods={"GET"})
      */
     public function show(question $question): Response
     {
@@ -69,7 +69,7 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/opadmin/question/{id}/edit", name="admin_question_edit", methods={"GET","POST"})
+     * @Route("/opadmin/question/{id}/edit", name="op_admin_question_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, question $question): Response
     {
@@ -79,7 +79,7 @@ class QuestionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_question_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('op_admin_question_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/question/edit.html.twig', [
@@ -89,7 +89,7 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/opadmin/question/{id}", name="admin_question_delete", methods={"POST"})
+     * @Route("/opadmin/question/{id}", name="op_admin_question_delete", methods={"POST"})
      */
     public function delete(Request $request, question $question): Response
     {
@@ -99,6 +99,6 @@ class QuestionController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_question_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('op_admin_question_index', [], Response::HTTP_SEE_OTHER);
     }
 }
