@@ -1,0 +1,37 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Accompagnement index{% endblock %}
+
+{% block content %}
+    <h1>Accompagnement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Accompagnement</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for accompagnement in accompagnements %}
+            <tr>
+                <td>{{ accompagnement.id }}</td>
+                <td>{{ accompagnement.accompagnement ? accompagnement.accompagnement|join(', ') : '' }}</td>
+                <td>{{ accompagnement.description }}</td>
+                <td>
+                    <a href="{{ path('op_admin_accompagnement_show', {'id': accompagnement.id}) }}">show</a>
+                    <a href="{{ path('op_admin_accompagnement_edit', {'id': accompagnement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('op_admin_accompagnement_new') }}">Create new</a>
+{% endblock %}
