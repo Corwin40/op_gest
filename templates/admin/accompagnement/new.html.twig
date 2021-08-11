@@ -2,8 +2,20 @@
 
 {% block title %}New Accompagnement{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /*Textbox*/
+        .ck-editor__editable {
+            min-height: 300px;
+            max-height: 300px;
+        }
+        /*Toolbar*/
+    </style>
+{% endblock %}
+
 {% block javascripts %}
-    <script src="{{ asset('bundles/ckeditor5/build/ckeditor.js') }}"></script>
+    {{ parent() }}
     <script>
         window.onload = function(){
             ClassicEditor
