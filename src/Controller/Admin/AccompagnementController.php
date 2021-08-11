@@ -14,7 +14,7 @@ class AccompagnementController extends AbstractController
 {
     /**
      * Controller Admin
-     * @Route(/opadmin/accompagnement/", name="op_admin_accompagnement_index", methods={"GET"})
+     * @Route("/opadmin/accompagnement/", name="op_admin_accompagnement_index", methods={"GET"})
      */
     public function index(AccompagnementRepository $accompagnementRepository): Response
     {
@@ -24,7 +24,7 @@ class AccompagnementController extends AbstractController
     }
 
     /**
-     * @Route("/opadmin/accompagnement/new", name="op_admin_accompagnement_new", methods={"GET","POST"})
+     * @Route("/webapp/accompagnement/new", name="op_admin_accompagnement_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
