@@ -12,7 +12,7 @@ class AccompagnementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('accompagnement')
+            ->add('TypeAcc')
             ->add('description')
         ;
     }

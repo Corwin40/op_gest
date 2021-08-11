@@ -18,30 +18,18 @@ class Accompagnement
     private $id;
 
     /**
-     * @ORM\Column(type="array")
-     */
-    private $accompagnement = [];
-
-    /**
      * @ORM\Column(type="text")
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeAcc::class, inversedBy="accompagnements")
+     */
+    private $TypeAcc;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getAccompagnement(): ?array
-    {
-        return $this->accompagnement;
-    }
-
-    public function setAccompagnement(array $accompagnement): self
-    {
-        $this->accompagnement = $accompagnement;
-
-        return $this;
     }
 
     public function getDescription(): ?string
@@ -52,6 +40,18 @@ class Accompagnement
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getTypeAcc(): ?TypeAcc
+    {
+        return $this->TypeAcc;
+    }
+
+    public function setTypeAcc(?TypeAcc $TypeAcc): self
+    {
+        $this->TypeAcc = $TypeAcc;
 
         return $this;
     }
