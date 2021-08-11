@@ -12,9 +12,12 @@
 			function onClickSubmit(event){
 				event.preventDefault();
 
-				const form = new FormData();
+				var formposte = document.getElementById('formposte');
+				const form = new FormData(formposte);
+				console.log(form);
+
 				//const url = this.href;
-				const firstName = document.getElementById('formposte_firstName').value;
+				//const firstName = document.getElementById('formposte_firstName').value;
 				//const lastName = document.getElementById('formposte_lastName').value;
 				//const phone = document.getElementById('formposte_phone').value;
 				//const email = document.getElementById('formposte_email').value;
@@ -27,16 +30,16 @@
 				//checkboxes.forEach((checkbox) => {
 				//	values.push(checkbox.value);
 				//});
+
+				//console.log(firstName, lastName, phone, email, age, genre, isInternet, isRgpd)
+
 				//const besoins = values;
-				form.append('firstName', firstName);
 				//axios
 				//	.post(url, {firstName:firstName, lastName:lastName, phone:phone, email:email, besoins:besoins, age:age, genre:genre, isRgpd:isRgpd, isInternet:isInternet})
 				//	.then(function (response){
 				//		console.log(response);
 				//	})
 				//	.catch(function(error){console.log(error)})
-
-				console.log(form);
 			}
 
 			// évènement sur le clic d'nevoie formulaire

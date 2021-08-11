@@ -4,6 +4,7 @@ namespace App\Form\Admin;
 
 use App\Entity\Admin\Formposte;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,10 @@ class FormposteType extends AbstractType
             ->add('email')
             ->add('phone')
             ->add('lastName')
-            ->add('isRgpd')
+            ->add('isRgpd', CheckboxType::class, [
+                'label'    => "En soumettant ce formulaire, j'accepte que les données saisies soient exploitées dans le cadre de l'étude sur les connaissances numériques des usagers de la poste.",
+                'required' => false,
+            ])
             ->add('age',ChoiceType::class, [
                 'choices'  => [
                     'de 10 à 20 ans' => '10-20',
@@ -36,7 +40,10 @@ class FormposteType extends AbstractType
                     'Une homme' => 'men'
                 ],
             ])
-            ->add('isInternet')
+            ->add('isInternet', CheckboxType::class, [
+                'label'    => "un accès à internet : Box, Mobile, ...",
+                'required' => false,
+            ])
         ;
     }
 
