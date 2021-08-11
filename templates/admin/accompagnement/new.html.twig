@@ -2,10 +2,31 @@
 
 {% block title %}New Accompagnement{% endblock %}
 
+{% block javascripts %}
+    <script src="{{ asset('bundles/ckeditor5/build/ckeditor.js') }}"></script>
+    <script>
+        window.onload = function(){
+            ClassicEditor
+                .create(document.querySelector('#accompagnement_description'), {
+                    toolbar: [ 'heading','bold', 'italic', 'bulletedList', 'numberedList', 'blockQuote', 'indent', 'alignment' ],
+                    height: 50
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script>
+{% endblock %}
+
 {% block content %}
-    <h1>Create new Accompagnement</h1>
-
-    {{ include('admin/accompagnement/_form.html.twig') }}
-
-    <a href="{{ path('op_admin_accompagnement_index') }}">back to list</a>
+    <section class="container">
+        <div id="content-header" class="row mb-3">
+            <div class="col-12">
+                <h1>Ajouter un accompagnement</h1>
+            </div>
+        </div>
+        <div class="content">
+            {{ include('admin/accompagnement/_form.html.twig') }}
+        </div>
+    </section>
 {% endblock %}
