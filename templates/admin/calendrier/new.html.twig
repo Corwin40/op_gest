@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Calendrier{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Créer un RDV</h1>
+
+        {{ include('calendrier/_form.html.twig') }}
+
+        <a href="{{ path('calendrier_index') }}">Voir la liste des RDV</a>
+    </div>
+{% endblock %}
