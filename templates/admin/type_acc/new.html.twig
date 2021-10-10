@@ -1,0 +1,20 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}OpenGaia | type d'accompagnement{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <section id="op_admin_content_body">
+            <div class="row g-2">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Créer un nouveau type d'accompagnement</h3>
+                        </div>
+                        {{ include('admin/type_acc/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

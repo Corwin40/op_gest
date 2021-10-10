@@ -68,16 +68,6 @@ class Formposte
     private $isRgpd = false;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $isInternet = false;
-
-    /**
-     * @ORM\Column(type="string", length=25, nullable=true)
-     */
-    private $equipement;
-
-    /**
      * @ORM\Column(type="datetime_immutable")
      */
     private $createdAt;
@@ -86,6 +76,31 @@ class Formposte
      * @ORM\Column(type="datetime_immutable")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $internet;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $computer;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mediadevice;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $printdevice;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $otherdevice;
 
     public function getId(): ?int
     {
@@ -176,30 +191,6 @@ class Formposte
         return $this;
     }
 
-    public function getEquipement(): ?string
-    {
-        return $this->equipement;
-    }
-
-    public function setEquipement(?string $equipement): self
-    {
-        $this->equipement = $equipement;
-
-        return $this;
-    }
-
-    public function getIsInternet(): ?bool
-    {
-        return $this->isInternet;
-    }
-
-    public function setIsInternet(bool $isInternet): self
-    {
-        $this->isInternet = $isInternet;
-
-        return $this;
-    }
-
     public function getAge(): ?string
     {
         return $this->age;
@@ -250,6 +241,66 @@ class Formposte
     public function setUpdatedAt(): self
     {
         $this->updatedAt = new \DatetimeImmutable('now');
+        return $this;
+    }
+
+    public function getInternet(): ?string
+    {
+        return $this->internet;
+    }
+
+    public function setInternet(string $internet): self
+    {
+        $this->internet = $internet;
+
+        return $this;
+    }
+
+    public function getComputer(): ?string
+    {
+        return $this->computer;
+    }
+
+    public function setComputer(string $computer): self
+    {
+        $this->computer = $computer;
+
+        return $this;
+    }
+
+    public function getMediadevice(): ?string
+    {
+        return $this->mediadevice;
+    }
+
+    public function setMediadevice(string $mediadevice): self
+    {
+        $this->mediadevice = $mediadevice;
+
+        return $this;
+    }
+
+    public function getPrintdevice(): ?string
+    {
+        return $this->printdevice;
+    }
+
+    public function setPrintdevice(string $printdevice): self
+    {
+        $this->printdevice = $printdevice;
+
+        return $this;
+    }
+
+    public function getOtherdevice(): ?string
+    {
+        return $this->otherdevice;
+    }
+
+    public function setOtherdevice(string $otherdevice): self
+    {
+        $this->otherdevice = $otherdevice;
+
         return $this;
     }
 }

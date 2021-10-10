@@ -1,4 +1,23 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="card-body">
+    <div class="row mb-1 mt-1 g-1">
+        <div class="col-3">
+            {{ form_label(form.TypeAcc, "Type d'accompagnement", {'label_attr': {'class':'form-label'}}) }}
+        </div>
+        <div class="col-9">
+            {{ form_widget(form.TypeAcc, {'attr': {'class': 'form-select form-select-sm', 'rows':'10'}}) }}
+        </div>
+    </div>
+    <div class="row mb-1 mt-1 g-1">
+        <div class="col-3">
+            {{ form_label(form.description, 'Description', {'label_attr': {'class':'form-label'}}) }}
+        </div>
+        <div class="col-9">
+            {{ form_widget(form.description, {'attr': {'class': 'form-control form-control-sm', 'rows':'10'}}) }}
+        </div>
+    </div>
+</div>
+<div class="card-footer">
+    <button class="btn btn-sm btn-outline-secondary">{{ button_label|default('Ajouter') }}</button>
+</div>
 {{ form_end(form) }}

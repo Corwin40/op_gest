@@ -37,13 +37,49 @@ class FormposteType extends AbstractType
             ->add('genre',ChoiceType::class, [
                 'choices'  => [
                     'Une femme' => 'women',
-                    'Une homme' => 'men'
+                    'Une homme' => 'men',
+                    'autres' => 'other'
                 ],
             ])
-            ->add('isInternet', CheckboxType::class, [
-                'label'    => "un accès à internet : Box, Mobile, ...",
-                'required' => false,
+            ->add('internet',ChoiceType::class, [
+                'choices'  => [
+                    'aucun accès' => 'none',
+                    'oui, Une box' => 'box',
+                    'oui, Un téléphone' => 'gsm',
+                    'oui, box et téléphone' => 'box + gsm',
+                ],
             ])
+            ->add('computer',ChoiceType::class, [
+                'choices'  => [
+                    'aucun' => 'none',
+                    'oui, Un pc à usage familiale' => 'one, pc for family',
+                    'oui, deux pc famille & pro' => 'two, family - pro',
+                    'oui, plusieurs' => 'multiple',
+                ],
+            ])
+            ->add('mediadevice',ChoiceType::class, [
+                'choices'  => [
+                    'aucun' => 'none',
+                    'une tablette' => 'one, no-connectivity',
+                    'un téléphone intelligent' => 'one, connectivity',
+                    'une console' => 'multiple',
+                ],
+            ])
+            ->add('otherdevice',ChoiceType::class, [
+                'choices'  => [
+                    'aucun' => 'none',
+                    'une télé non connecté' => 'no-connectivity',
+                    'une télé connecté' => 'connectivity',
+                    'plusieurs' => 'multiple',
+                ],
+            ])
+            ->add('printdevice',ChoiceType::class, [
+                'choices'  => [
+                    'aucune' => 'none',
+                    'oui' => 'one',
+                ],
+            ])
+
         ;
     }
 

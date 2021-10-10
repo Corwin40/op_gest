@@ -37,7 +37,7 @@ class AccompagnementController extends AbstractController
             $entityManager->persist($accompagnement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('op_admin_accompagnement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('op_webapp_public_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin/accompagnement/new.html.twig', [

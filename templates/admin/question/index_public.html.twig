@@ -9,9 +9,8 @@
     <tbody>
     {% for question in questions %}
         <tr>
-            <td><input type="checkbox" value="{{ question.id }}"></td>
             <td>{{ question.name }}</td>
-            <td>{{ question.level }}</td>
+            <td></td>
         </tr>
     {% else %}
         <tr>

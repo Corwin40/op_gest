@@ -31,9 +31,25 @@
     <main>
         {% block content %}{% endblock %}
     </main>
+
     <footer>
         {% block footer %}
             <section class="container-fluid">
+                <div aria-live="polite" aria-atomic="true" class="bg-dark position-relative">
+                    <div class="toast-container position-absolute bottom-100 end-0 p-3">
+                        <div id="toaster" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                                <img src="..." class="rounded me-2" alt="...">
+                                <strong class="me-auto">Bootstrap</strong>
+                                <small class="text-muted">A l'instant</small>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div class="toast-body">
+                                Hello, world! This is a toast message.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
             <section class="container-fluid">
                 <div class="row">
@@ -88,15 +104,5 @@
             </section>
         {% endblock %}
     </footer>
-    <div id="toaster" class="toast position-absolute bottom-0 end-0 m-5" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Message</strong>
-            <small>à l'instant</small>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-        </div>
-    </div>
     </body>
 </html>

@@ -53,14 +53,45 @@
         <div class="col-6"></div>
         <div class="col-12">
             <h5>Et à la maison, Vous possédez ...  :</h5>
-            <div class="row mb-1 mt-1 g-1">
-                <fieldset>
-                    <div class="form-check">
-                        {{ form_widget(form.isInternet, {'attr': {'class': 'form-check-input'}}) }}
-                        {{ form_label(form.isInternet, "Une connexion à Internet.", {'label_attr': {'class':'form-check-label'}}) }}
-                    </div>
-                </fieldset>
-
+            <div class="row mt-1 g-1">
+                <div class="col-3">
+                    <p>un accès à internet :</p>
+                </div>
+                <div class="col-3">
+                    {{ form_widget(form.internet, {'attr': {'class': 'form-select form-select-sm'}}) }}
+                </div>
+            </div>
+            <div class="row g-1">
+                <div class="col-3">
+                    <p>un ordinateur :</p>
+                </div>
+                <div class="col-3">
+                    {{ form_widget(form.computer, {'attr': {'class': 'form-select form-select-sm'}}) }}
+                </div>
+            </div>
+            <div class="row g-1">
+                <div class="col-3">
+                    <p>un autre type d'appareil intelligent :</p>
+                </div>
+                <div class="col-3">
+                    {{ form_widget(form.mediadevice, {'attr': {'class': 'form-select form-select-sm'}}) }}
+                </div>
+            </div>
+            <div class="row g-1">
+                <div class="col-3">
+                    <p>un autre type d'appareil connecté :</p>
+                </div>
+                <div class="col-3">
+                    {{ form_widget(form.otherdevice, {'attr': {'class': 'form-select form-select-sm'}}) }}
+                </div>
+            </div>
+            <div class="row g-1">
+                <div class="col-3">
+                    <p>Une imprimante :</p>
+                </div>
+                <div class="col-3">
+                    {{ form_widget(form.printdevice, {'attr': {'class': 'form-select form-select-sm'}}) }}
+                </div>
             </div>
         </div>
         <div class="col-12">

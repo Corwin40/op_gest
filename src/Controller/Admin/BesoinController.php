@@ -89,7 +89,7 @@ class BesoinController extends AbstractController
     }
 
     /**
-     * @Route("/admin/besoin/{id}", name="admin_besoin_delete", methods={"POST"})
+     * @Route("/admin/besoin/{id}", name="op_admin_besoin_delete", methods={"POST"})
      */
     public function delete(Request $request, Besoin $besoin): Response
     {
@@ -99,6 +99,6 @@ class BesoinController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_besoin_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('op_admin_besoin_index', [], Response::HTTP_SEE_OTHER);
     }
 }

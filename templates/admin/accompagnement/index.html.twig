@@ -18,7 +18,6 @@
         {% for accompagnement in accompagnements %}
             <tr>
                 <td>{{ accompagnement.id }}</td>
-                <td>{{ accompagnement.accompagnement ? accompagnement.accompagnement|join(', ') : '' }}</td>
                 <td>{{ accompagnement.description }}</td>
                 <td>
                     <a href="{{ path('op_admin_accompagnement_show', {'id': accompagnement.id}) }}">show</a>

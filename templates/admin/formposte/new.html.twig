@@ -11,35 +11,60 @@
 			// function d'envoie des données
 			function onClickSubmit(event){
 				event.preventDefault();
+				const url = this.href;
+				const firstName = document.getElementById('formposte_firstName').value;
+				const lastName = document.getElementById('formposte_lastName').value;
+				const phone = document.getElementById('formposte_phone').value;
+				const email = document.getElementById('formposte_email').value;
+				const age = document.getElementById('formposte_age').value;
+				const genre = document.getElementById('formposte_genre').value;
+				const isRgpd = document.getElementById('formposte_isRgpd').value;
+				const internet = document.getElementById('formposte_internet').value;
+				const computer = document.getElementById('formposte_computer').value;
+				const mediadevice = document.getElementById('formposte_mediadevice').value;
+				const otherdevice = document.getElementById('formposte_otherdevice').value;
+				const printdevice = document.getElementById('formposte_printdevice').value;
+				const besoins = [];
 
-				var formposte = document.getElementById('formposte');
-				const form = new FormData(formposte);
-				console.log(form);
+				const checkboxes = document.querySelectorAll(`input[name="checkedbesoin"]:checked`); // Récupére seulement les checkbox qui sont true
+				checkboxes.forEach((checkbox) => {
+					besoins.push(checkbox.value);
+				});
 
-				//const url = this.href;
-				//const firstName = document.getElementById('formposte_firstName').value;
-				//const lastName = document.getElementById('formposte_lastName').value;
-				//const phone = document.getElementById('formposte_phone').value;
-				//const email = document.getElementById('formposte_email').value;
-				//const age = document.getElementById('formposte_age').value;
-				//const genre = document.getElementById('formposte_genre').value;
-				//const isRgpd =  document.getElementById('formposte_isRgpd').value;
-				//const isInternet =  document.getElementById('formposte_isInternet').value;
-				//const values = [];
-				//const checkboxes = document.querySelectorAll(`input[name="checkedbesoin"]:checked`); // Récupére seulement les checkbox qui sont true
-				//checkboxes.forEach((checkbox) => {
-				//	values.push(checkbox.value);
-				//});
-
-				//console.log(firstName, lastName, phone, email, age, genre, isInternet, isRgpd)
-
-				//const besoins = values;
-				//axios
-				//	.post(url, {firstName:firstName, lastName:lastName, phone:phone, email:email, besoins:besoins, age:age, genre:genre, isRgpd:isRgpd, isInternet:isInternet})
-				//	.then(function (response){
-				//		console.log(response);
-				//	})
-				//	.catch(function(error){console.log(error)})
+				axios
+					.post(url, {
+						firstName:firstName,
+						lastName:lastName,
+						phone:phone,
+						email:email,
+						genre:genre,
+						age:age,
+						isRgpd:isRgpd,
+						internet:internet,
+						computer:computer,
+						mediadevice:mediadevice,
+						otherdevice:otherdevice,
+						printdevice:printdevice,
+						besoins:besoins
+					})
+					.then(function (response){
+						// préparation du toaster
+						var option = {
+							animation : true,
+							autohide: true,
+							delay : 3000,
+						};
+						// initialisation du toaster
+						var toastHTMLElement = document.getElementById("toaster");
+						var message = response.data.message;
+						var toastBody = toastHTMLElement.querySelector('.toast-body') // selection de l'élément possédant le message
+						toastBody.textContent = message;
+						var toastElement = new bootstrap.Toast(toastHTMLElement, option);
+						toastElement.show();
+					})
+					.catch(function(error){
+						console.log(error);
+					})
 			}
 
 			// évènement sur le clic d'nevoie formulaire

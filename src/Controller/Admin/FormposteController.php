@@ -124,12 +124,16 @@ class FormposteController extends AbstractController
         $formposte->setlastName($data['lastName']);
         $formposte->setPhone($data['phone']);
         $formposte->setEmail($data['email']);
-        $formposte->setBesoins($data['besoins']);
         $formposte->setAge($data['age']);
         $formposte->setGenre($data['genre']);
         $formposte->setIsRgpd($data['isRgpd']);
-        $formposte->setIsInternet($data['isInternet']);
-
+        $formposte->setInternet($data['internet']);
+        $formposte->setComputer($data['computer']);
+        $formposte->setMediadevice($data['mediadevice']);
+        $formposte->setOtherdevice($data['otherdevice']);
+        $formposte->setPrintdevice($data['printdevice']);
+        $formposte->setBesoins($data['besoins']);
+        //dd($formposte);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($formposte);
         $entityManager->flush();

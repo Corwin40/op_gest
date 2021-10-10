@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeAcc{% endblock %}
+
+{% block body %}
+    <h1>TypeAcc</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type_acc.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ type_acc.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_type_acc_index') }}">back to list</a>
+
+    <a href="{{ path('admin_type_acc_edit', {'id': type_acc.id}) }}">edit</a>
+
+    {{ include('admin_type_acc/_delete_form.html.twig') }}
+{% endblock %}
