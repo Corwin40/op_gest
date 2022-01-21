@@ -37,8 +37,8 @@ class FormposteType extends AbstractType
             ->add('genre',ChoiceType::class, [
                 'choices'  => [
                     'Une femme' => 'women',
-                    'Une homme' => 'men',
-                    'autres' => 'other'
+                    'Un homme' => 'men',
+                    'autre' => 'other'
                 ],
             ])
             ->add('internet',ChoiceType::class, [
@@ -52,9 +52,9 @@ class FormposteType extends AbstractType
             ->add('computer',ChoiceType::class, [
                 'choices'  => [
                     'aucun' => 'none',
-                    'oui, Un pc à usage familiale' => 'one, pc for family',
-                    'oui, deux pc famille & pro' => 'two, family - pro',
-                    'oui, plusieurs' => 'multiple',
+                    'Un pc à usage familial' => 'one, pc for family',
+                    ' deux pc famille & pro' => 'two, family - pro',
+                    'plusieurs' => 'multiple',
                 ],
             ])
             ->add('mediadevice',ChoiceType::class, [
@@ -68,8 +68,8 @@ class FormposteType extends AbstractType
             ->add('otherdevice',ChoiceType::class, [
                 'choices'  => [
                     'aucun' => 'none',
-                    'une télé non connecté' => 'no-connectivity',
-                    'une télé connecté' => 'connectivity',
+                    'une télé non connectée' => 'no-connectivity',
+                    'une télé connectée' => 'connectivity',
                     'plusieurs' => 'multiple',
                 ],
             ])

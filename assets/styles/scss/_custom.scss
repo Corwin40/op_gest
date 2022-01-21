@@ -14,6 +14,23 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #222222;
 }
 
+.rating {
+  direction: rtl;
+}
+.rating a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 1em;
+  transition: color .4s;
+}
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+  color: orange;
+  cursor: pointer;
+}
+
 /***---------- NAVBAR ----------***/
 
 /***---------- MAIN ----------***/
